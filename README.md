@@ -17,7 +17,25 @@ Create a new Titanium Project and replace the *Resources* folder
 
 Usage
 ------------
-*will write this soon*
+
+The general idea is to have a main namespace called app, and within app, two namespaces: app.ui and app.modules.
+
+Each module is a self-calling annonymous function which inserts itself into any of these two namespaces.  The function can have private and public members.
+
+On app.js, the namespaces are created, modules are included and a main function is called:
+
+::
+var app={};
+app.ui={};
+app.modules={};
+
+// add modules
+Ti.include('modules/main.js');
+//
+
+app.modules.main.getMainWindow();
+
+
 
 License
 ------------
