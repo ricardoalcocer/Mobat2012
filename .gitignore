@@ -1,0 +1,8 @@
+tmp
+*.class
+*.pyc
+*.pyo
+build
+LICENSE*
+README*
+CHANGELOG*
