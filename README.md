@@ -9,15 +9,20 @@ This project was initiated after many Titanium courses offered in Puerto Rico (h
 
 Hope you find it useful and you can help make the code better.
 
+
 Installation
 ------------
+Create a new Titanium Project and replace the *Resources* folder
+
 
 Usage
 ------------
+*will write this soon*
 
 License
 ------------
 The code is released as Open Source under the GPL3 license.
+
 
 Contributors
 ------------
