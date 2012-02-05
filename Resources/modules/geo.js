@@ -27,14 +27,14 @@
 	// inject this code into app.modules
 	app.modules.geo={};
 	
-	var longitude = e.coords.longitude;
-	var latitude = e.coords.latitude;
-	var altitude = e.coords.altitude;
-	var heading = e.coords.heading;
-	var accuracy = e.coords.accuracy;
-	var speed = e.coords.speed;
-	var timestamp = e.coords.timestamp;
-	var altitudeAccuracy = e.coords.altitudeAccuracy;
+	var longitude = 0;
+	var latitude = 0;
+	var altitude = 0;
+	var heading = 0;
+	var accuracy = 0;
+	var speed = 0;
+	var timestamp = 0;
+	var altitudeAccuracy = 0;
 	
 	if (typeof(Number.prototype.toRad) === "undefined") {
 	  Number.prototype.toRad = function() {
