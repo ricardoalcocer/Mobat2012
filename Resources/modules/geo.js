@@ -21,21 +21,42 @@
  * Version:			
  * 
  * Notes:
- *
- * Returns:
- * 	latitude
- * 	longitude
- * 	altitude
- * 	heading
- * 	accuracy
- * 	speed
- * 	timestamp
- * 	altitudeAccuracy
  * 
  */
 (function(){
 	// inject this code into app.modules
 	app.modules.geo={};
+	
+	var longitude = e.coords.longitude;
+	var latitude = e.coords.latitude;
+	var altitude = e.coords.altitude;
+	var heading = e.coords.heading;
+	var accuracy = e.coords.accuracy;
+	var speed = e.coords.speed;
+	var timestamp = e.coords.timestamp;
+	var altitudeAccuracy = e.coords.altitudeAccuracy;
+	
+	if (typeof(Number.prototype.toRad) === "undefined") {
+	  Number.prototype.toRad = function() {
+	    return this * Math.PI / 180;
+	  }
+	}
+
+	Titanium.Geolocation.addEventListener('location',function(e){
+		if (e.error){
+        	// manage the error
+			return;
+		}
+ 
+		longitude = e.coords.longitude;
+		latitude = e.coords.latitude;
+		altitude = e.coords.altitude;
+		heading = e.coords.heading;
+		accuracy = e.coords.accuracy;
+		speed = e.coords.speed;
+		timestamp = e.coords.timestamp;
+		altitudeAccuracy = e.coords.altitudeAccuracy;
+      });
 	
 	app.modules.geo.getCurrentPosition=function(args){
 		var outData={};
@@ -47,14 +68,14 @@
 				return;
 			}
 	
-			var longitude = e.coords.longitude;
-			var latitude = e.coords.latitude;
-			var altitude = e.coords.altitude;
-			var heading = e.coords.heading;
-			var accuracy = e.coords.accuracy;
-			var speed = e.coords.speed;
-			var timestamp = e.coords.timestamp;
-			var altitudeAccuracy = e.coords.altitudeAccuracy;
+			longitude = e.coords.longitude;
+			latitude = e.coords.latitude;
+			altitude = e.coords.altitude;
+			heading = e.coords.heading;
+			accuracy = e.coords.accuracy;
+			speed = e.coords.speed;
+			timestamp = e.coords.timestamp;
+			altitudeAccuracy = e.coords.altitudeAccuracy;
 			
 			outData={
 				latitude:latitude,
@@ -68,5 +89,19 @@
 			}
 		});	
 		return outData;
+	}
+	
+	app.modules.geo.getDistance=function(lat1,lon1,lat2,lon2){
+		var R = 6371; // km
+		var dLat = (lat2-lat1).toRad();
+		var dLon = (lon2-lon1).toRad();
+		var lat1 = lat1.toRad();
+		var lat2 = lat2.toRad();
+		
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		var d = R * c;
+		return d;
 	}
 })()
