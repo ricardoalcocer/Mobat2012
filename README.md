@@ -20,21 +20,41 @@ Usage
 
 The general idea is to have a main namespace called app, and within app, two namespaces: app.ui and app.modules.
 
-Each module is a self-calling annonymous function which inserts itself into any of these two namespaces.  The function can have private and public members.
-
 On app.js, the namespaces are created, modules are included and a main function is called:
 
-::
-var app={};
-app.ui={};
-app.modules={};
 
-// add modules
-Ti.include('modules/main.js');
-//
+	var app={};
+	app.ui={};
+	app.modules={};
 
-app.modules.main.getMainWindow();
+	// add modules
+	Ti.include('modules/main.js');
+	//
 
+	app.modules.main.getMainWindow();
+
+
+Each module is a self-calling annonymous function which inserts itself into any of these two namespaces.  The function can have private and public members.
+
+	(function(){
+		// add this module into one of the namespaces
+		app.modules.main={};
+		
+		// private var and functions can be somewhere here
+		// also, public methods to get access to private vars
+		
+		// create a public method
+		app.modules.main.getMainWindow=function(){
+			var win=Ti.UI.createWindow();
+			
+			return win;
+		}
+	})()
+
+
+Notes
+------------
+In the future, I would like to evaluate the benefits of adding support to Klass (http://dustindiaz.com/klass)
 
 
 License
