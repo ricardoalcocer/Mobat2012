@@ -1,7 +1,5 @@
 ![Mobat Logo](http://ricardoalcocer.com/wp-content/uploads/2012/02/logo.png)
 
-MOBAT - Module-based Application Template
-=============
 
 MOBAT is a Titanium Application Template designed to make coding in Titanium less like web-based coding and more like traditional object oriented desktop coding.
 
