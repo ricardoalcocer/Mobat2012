@@ -16,7 +16,7 @@ Create a new Titanium Project and replace the *Resources* folder
 
 In Titanium Studio, select Import - Git - Git Repository as New Project
 
-	Path: git://github.com/ricardoalcocer/Mobat2012.gif
+	git://github.com/ricardoalcocer/Mobat2012.git
 	
 Enter your local project path and wait a few seconds until the repository gets cloned.
 
